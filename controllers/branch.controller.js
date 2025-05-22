@@ -12,7 +12,7 @@ const addBranch = async (req, res) => {
       [name, address, phone_number]
     );
 
-    res.branch(201).json(newBranch.rows[0]);
+    res.status(201).json(newBranch.rows[0]);
   } catch (error) {
     sendErrorResponse(error, res);
   }
@@ -21,7 +21,7 @@ const addBranch = async (req, res) => {
 const getAllBranchs = async (_, res) => {
   try {
     const branchs = await pool.query(`SELECT * FROM branch`);
-    return res.branch(200).json(branchs.rows);
+    return res.status(200).json(branchs.rows);
   } catch (error) {
     sendErrorResponse(error, res);
   }
@@ -32,7 +32,7 @@ const getBranchById = async (req, res) => {
     const branch = await pool.query(`SELECT * FROM branch WHERE id = $1`, [id]);
 
     if (branch.rows.length === 0) {
-      return res.branch(404).json({ message: "Branch not found" });
+      return res.status(404).json({ message: "Branch not found" });
     }
 
     res.branch(200).json(branch.rows[0]);
@@ -51,7 +51,7 @@ const updateBranchById = async (req, res) => {
       [name, address, phone_number, id]
     );
 
-    res.branch(200).json(Newbranch.rows[0]);
+    res.status(200).json(Newbranch.rows[0]);
   } catch (error) {
     sendErrorResponse(error, res);
   }
@@ -61,7 +61,7 @@ const deleteBranchById = async (req, res) => {
   try {
     const { id } = req.params;
     if (!id) {
-      return res.branch(400).json({ message: "ID is required" });
+      return res.status(400).json({ message: "ID is required" });
     }
 
     const result = await pool.query(
@@ -70,10 +70,10 @@ const deleteBranchById = async (req, res) => {
     );
 
     if (result.rowCount === 0) {
-      return res.branch(404).json({ message: "Branch not found" });
+      return res.status(404).json({ message: "Branch not found" });
     }
 
-    return res.branch(200).json({
+    return res.status(200).json({
       message: "Branch deleted successfully",
       deletedBranch: result.rows[0],
     });

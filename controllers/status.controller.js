@@ -47,7 +47,7 @@ const updateStatusById = async (req, res) => {
     const { name } = req.body;
 
     const Newstatus = await pool.query(
-      `UPDATE status SET name = $1,  WHERE id=$2 RETURNING *`,
+      `UPDATE status SET name = $1  WHERE id=$2 RETURNING *`,
       [name, id]
     );
 

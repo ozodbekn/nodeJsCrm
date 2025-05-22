@@ -12,7 +12,7 @@ const addRole = async (req, res) => {
       [name]
     );
 
-    res.role(201).json(newRole.rows[0]);
+    res.status(201).json(newRole.rows[0]);
   } catch (error) {
     sendErrorResponse(error, res);
   }
@@ -21,7 +21,7 @@ const addRole = async (req, res) => {
 const getAllRoles = async (_, res) => {
   try {
     const roles = await pool.query(`SELECT * FROM role`);
-    return res.role(200).json(roles.rows);
+    return res.status(200).json(roles.rows);
   } catch (error) {
     sendErrorResponse(error, res);
   }
@@ -32,10 +32,10 @@ const getRoleById = async (req, res) => {
     const role = await pool.query(`SELECT * FROM role WHERE id = $1`, [id]);
 
     if (role.rows.length === 0) {
-      return res.role(404).json({ message: "Role not found" });
+      return res.status(404).json({ message: "Role not found" });
     }
 
-    res.role(200).json(role.rows[0]);
+    res.status(200).json(role.rows[0]);
   } catch (error) {
     sendErrorResponse(error, res);
   }
@@ -61,7 +61,7 @@ const deleteRoleById = async (req, res) => {
   try {
     const { id } = req.params;
     if (!id) {
-      return res.role(400).json({ message: "ID is required" });
+      return res.status(400).json({ message: "ID is required" });
     }
 
     const result = await pool.query(
@@ -70,10 +70,10 @@ const deleteRoleById = async (req, res) => {
     );
 
     if (result.rowCount === 0) {
-      return res.role(404).json({ message: "Role not found" });
+      return res.status(404).json({ message: "Role not found" });
     }
 
-    return res.role(200).json({
+    return res.status(200).json({
       message: "Role deleted successfully",
       deletedRole: result.rows[0],
     });
