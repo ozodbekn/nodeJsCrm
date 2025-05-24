@@ -3,10 +3,10 @@ const pool = require("../config/db");
 
 const addBranch = async (req, res) => {
   try {
-    const { name } = req.body;
+    const { name, address, phone_number } = req.body;
 
     const newBranch = await pool.query(
-      `INSERT INTO branch      
+      `INSERT INTO "branch"      
       (name, address, phone_number) 
       VALUES ($1, $2, $3) RETURNING*`,
       [name, address, phone_number]
