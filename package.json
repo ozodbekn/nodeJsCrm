@@ -1,0 +1,18 @@
+{
+  "name": "nodejs_srm",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "dev": "node --watch app"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "config": "^4.0.0",
+    "express": "^5.1.0",
+    "node-device-detector": "^2.2.2",
+    "pg": "^8.16.0"
+  }
+}

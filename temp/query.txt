@@ -1,0 +1,34 @@
+ssh root@
+
+
+sudo apt update
+cd ~
+curl -sL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh
+nano nodesource_setup.sh
+sudo bash nodesource_setup.sh
+sudo apt install nodejs
+node -v
+
+sudo apt update
+sudo apt install postgresql postgresql-contrib
+sudo systemctl start postgresql.service
+sudo -i -u postgres
+
+ALTER USER postgres PASSWORD '5432';
+
+mkdir "folder_name"
+cd "folder_name"
+
+
+git init
+git pull https://github.com/ozodbekn/nodeJsCrm.git
+
+
+
+postgresni ichiga
+CREATE DATABASE crm;
+
+exit quit
+npm i
+
+node app
