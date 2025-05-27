@@ -8,8 +8,8 @@ const {
 
 const router = require("express").Router();
 
-router.get("/", getAllBranchs);
 router.post("/", addBranch);
+router.get("/", getAllBranchs);
 router.get("/:id", getBranchById);
 router.put("/:id", updateBranchById);
 router.delete("/:id", deleteBranchById);

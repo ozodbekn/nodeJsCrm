@@ -4,5 +4,11 @@
   "db_username": "postgres",
   "db_port": 5432,
   "db_password": "5432",
-  "db_name": "crm"
+  "db_name": "crm",
+  "iv": "adssd123",
+  "crypt_password": "JudaKuchliMaxfiyPassword",
+  "smtp_password": "qeog qgpq spxf mmxg",
+  "smtp_host": "smtp.gmail.com",
+  "smtp_port": 587,
+  "smtp_user": "ozodbekjalilov07@gmail.com"
 }
